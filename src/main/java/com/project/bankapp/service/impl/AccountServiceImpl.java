@@ -22,4 +22,20 @@ public class AccountServiceImpl implements AccountService {
        Account savedAccount= accountRepository.save(account);
         return AccountMaapper.mapToAccountDto(savedAccount);
     }
+
+    @Override
+    public AccountDto getAccountById(Long id) {
+        Account account=accountRepository
+                .findById(id).orElseThrow(()->new RuntimeException("Account does not exist"));
+        return AccountMaapper.mapToAccountDto(account);
+    }
+
+    @Override
+    public void deleteAccount(Long id) {
+        Account account=accountRepository
+                .findById(id).orElseThrow(()->new RuntimeException("Account does not exist"));
+
+        accountRepository.deleteById(id);
+
+    }
 }

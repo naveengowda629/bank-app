@@ -9,7 +9,7 @@ public class AccountMaapper {
         Account account=new Account(
         accountDto.getId(),
         accountDto.getAccHolderName(),
-                accountDto.getBalance()
+        accountDto.getBalance()
         );
         return  account;
     }
